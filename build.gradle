@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+}
+
+group 'com.mymoney'
+version '1.0'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+jar {
+    archiveBaseName = 'geektrust'
+    version =  null
+    manifest {
+        attributes 'Main-Class' : 'org.example.MyMoney'
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    } {
+        exclude "META-INF/*.SF"
+        exclude "META-INF/*.DSA"
+        exclude "META-INF/*.RSA"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.26'
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.26'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.26'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    testImplementation 'org.mockito:mockito-core:2.1.0'
+    implementation 'javax.validation:validation-api:2.0.0.Final'
+
+
+}
+
+test {
+    useJUnitPlatform()
+}
