@@ -11,7 +11,7 @@ jar {
     archiveBaseName = 'geektrust'
     version =  null
     manifest {
-        attributes 'Main-Class' : 'org.example.MyMoney'
+        attributes 'Main-Class' : 'com.mymoney.MyMoney'
     }
 
     from {
